@@ -1,0 +1,1 @@
+New-SPSite -URL "http://c7370309033:300/sites/PowerShellSite" -OwnerAlias "itechcs\Administrator" -Language 3082 -Template "STS#0" -Name "PowerShell Site" 

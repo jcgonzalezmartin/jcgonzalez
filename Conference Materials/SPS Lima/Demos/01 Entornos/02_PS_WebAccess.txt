@@ -1,0 +1,7 @@
+PowerShell Web Access Url: https://c7370309033/pswa
+Computer Name: c7370309033
+User: itechcs\Administrator
+
+--PowerShell commands
+Add-PSSnapin Microsoft.SharePoint.PowerShell
+Get-Command –pssnapin "Microsoft.SharePoint.PowerShell" | more

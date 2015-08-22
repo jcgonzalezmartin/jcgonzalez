@@ -1,0 +1,7 @@
+#Ejecución en la Consola de Administración de SharePoint Online
+$sUserName="jcgonzalez@nuberosnet.onmicrosoft.com"
+$sMessage="Introduce your SPO Credentials"
+$sSPOAdminCenterUrl="https://nuberosnet-admin.sharepoint.com/" 
+$msolcred = Get-Credential -UserName $sUserName -Message $sMessage
+Connect-SPOService -Url $sSPOAdminCenterUrl -Credential $msolcred 
+$spoSiteCollections=Get-SPOSite

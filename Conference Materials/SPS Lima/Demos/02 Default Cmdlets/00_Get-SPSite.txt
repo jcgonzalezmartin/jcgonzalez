@@ -1,0 +1,4 @@
+--Get-SPSite | select Url, @{Expression={$_.Usage.Storage/1MB}} " MB"
+Get-SPSite | select Url, @{Expression={$_.Usage.Storage/1MB}}
+Get-SPSite | select Url, {$_.Usage.Storage/1MB}
+

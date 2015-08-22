@@ -1,0 +1,1 @@
+Remove-SPSite -Identity "http://c7370309033:300/sites/PowerShellSite" -Confirm:$False
