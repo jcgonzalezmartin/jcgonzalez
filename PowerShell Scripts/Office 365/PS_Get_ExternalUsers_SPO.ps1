@@ -29,8 +29,8 @@ function Get-SPOExternalUsers
 }
 
 #Connection to Office 365
-$sUserName="jcgonzalez@nuberosnet.onmicrosoft.com"
+$sUserName="<O365User>@<O365Domain>.onmicrosoft.com"
 $sMessage="Introduce your SPO Credentials"
-$sSPOAdminCenterUrl="https://nuberosnet-admin.sharepoint.com/"
+$sSPOAdminCenterUrl="https://<O365Domain>-admin.sharepoint.com/"
 
 Get-SPOExternalUsers -sUserName $sUserName -sMessage $sMessage -sSPOAdminCenterUrl $sSPOAdminCenterUrl

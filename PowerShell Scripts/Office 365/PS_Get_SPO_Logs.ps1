@@ -52,9 +52,9 @@ function Get-SPOLogs
 }
 
 #Required Parameters
-$sSiteUrl = "https://nuberosnet-admin.sharepoint.com/" 
-$sUsername = "jcgonzalez@nuberosnet.onmicrosoft.com" 
+$sSiteUrl = "https://<O365Domain>-admin.sharepoint.com/" 
+$sUsername = "<O365User>@<O365Domain>.onmicrosoft.com" 
 #$sPassword = Read-Host -Prompt "Enter your password: " -AsSecureString  
-$sPassword=convertto-securestring "6805&DDT" -asplaintext -force
+$sPassword=convertto-securestring "<O365Password>" -asplaintext -force
 
 Get-SPOLogs -sSiteUrl $sSiteUrl -sUsername $sUsername -sPassword $sPassword

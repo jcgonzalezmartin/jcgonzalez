@@ -53,9 +53,9 @@ function Get-SPOSharePointGroupsInSite
 }
 
 #Required Parameters
-$sSiteColUrl = "https://nuberosnet.sharepoint.com/sites/TrainingSP/" 
-$sUsername = "jcgonzalez@nuberosnet.onmicrosoft.com" 
+$sSiteColUrl = "https://<O365Domain>.sharepoint.com/sites/TrainingSP/" 
+$sUsername = "<O365User>@<O365Domain>.onmicrosoft.com" 
 #$sPassword = Read-Host -Prompt "Enter your password: " -AsSecureString  
-$sPassword=convertto-securestring "6805&DDT" -asplaintext -force
+$sPassword=convertto-securestring "<O365Password>" -asplaintext -force
 
 Get-SPOSharePointGroupsInSite -sSiteColUrl $sSiteColUrl -sUsername $sUsername -sPassword $sPassword
