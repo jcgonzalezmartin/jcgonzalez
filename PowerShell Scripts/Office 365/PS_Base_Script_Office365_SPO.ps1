@@ -39,10 +39,10 @@ function Add-SPOUsersToGroup
 }
 
 #Required Parameters
-$sSiteColUrl = "https://nuberosnet.sharepoint.com/sites/SPSaturdayCol/" 
-$sUserName = "jcgonzalez@nuberosnet.onmicrosoft.com" 
+$sSiteColUrl = "https://<O365Domain>.sharepoint.com/sites/SPSaturdayCol/" 
+$sUserName = "<O365User>@<O365Domain>.onmicrosoft.com" 
 #$sPassword = Read-Host -Prompt "Enter your password: " -AsSecureString  
-$sPassword=convertto-securestring "6805&DDT" -asplaintext -force
+$sPassword=convertto-securestring "<O365Password>" -asplaintext -force
 $sGroup="CustomSPOGroup"
 $sUserToAdd="i:0#.f|membership|jcgonzalez@nuberosnet.onmicrosoft.com"
 
