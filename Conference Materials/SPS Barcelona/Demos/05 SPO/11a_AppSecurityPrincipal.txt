@@ -1,0 +1,35 @@
+
+-- Url para generar un nuevo App Security Principal:
+	https://itechcs.sharepoint.com/sites/CO365DeveloperSite/_layouts/15/appregnew.aspx
+
+	-> Id. de cliente en uso:  7bf50107-0a17-4920-8936-ad8ec91ef151
+	-> Clave secreta de cliente: vcfxHFOsFFTPTgiF/Cx6yLdd0J32EP7Mlo668HM7ZGA=
+	-> Título App: SPO Timer Job
+	-> Domimio App: localhost
+	-> Url de redirección: 
+
+--Url para configurar un App Security Principal:
+	https://itechcs.sharepoint.com/sites/CO365DeveloperSite/_layouts/15/appinv.aspx
+
+	-> Permission Request:
+
+<AppPermissionRequests AllowAppOnlyPolicy="true">
+    <AppPermissionRequest 
+        Scope="http://sharepoint/content/sitecollection/web" 
+        Right="Manage" />
+</AppPermissionRequests>
+
+--Modificación del Archivo App.Config de la Aplicación de Consola:
+<appSettings>
+    <add key="ClientId" value="[[YOUR_VALUE]]"/>
+    <add key="ClientSecret" value="[[YOUR_VALUE]]"/>
+</appSettings>
+
+--App Principals:
+
+	-> Como ver los App Principals en Uso: https://itechcs.sharepoint.com/sites/CO365DeveloperSite/_layouts/15/appprincipals.aspx
+	-> Como borrar los App Principals: http://blah.winsmarts.com/2014-5-Removing_AppPrincipals_from_Office365.aspx
+
+
+--WebJob:
+	-> ChangeSPOThemeWebJob

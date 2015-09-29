@@ -1,0 +1,2 @@
+Add-PSSnapin Microsoft.SharePoint.PowerShell
+Get-Command –pssnapin "Microsoft.SharePoint.PowerShell" | more

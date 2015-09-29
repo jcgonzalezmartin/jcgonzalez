@@ -1,0 +1,4 @@
+#Ejecución en la Consola de Administración de SharePoint Online
+$spoCmdlets=Get-Command | where {$_.ModuleName -eq "Microsoft.Online.SharePoint.PowerShell"}
+$spoCmdlets.Count
+$spoCmdlets

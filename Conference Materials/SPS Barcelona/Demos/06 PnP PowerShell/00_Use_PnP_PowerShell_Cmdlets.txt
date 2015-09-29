@@ -1,0 +1,60 @@
+----------------------------------------------------------------------------------------------
+--References
+----------------------------------------------------------------------------------------------
+	-> https://github.com/officedev/PnP-PowerShell
+	-> https://channel9.msdn.com/blogs/OfficeDevPnP/Introduction-to-PnP-PowerShell-Cmdlets
+
+----------------------------------------------------------------------------------------------
+--Demos
+----------------------------------------------------------------------------------------------
+#PnP Cmdlets
+$spoPnPCmdlets=Get-Command | where {$_.ModuleName -eq "OfficeDevPnP.PowerShell.Commands"}
+$spoPnPCmdlets.Count
+$spoPnPCmdlets
+
+Connect-SPOnline –Url https://nuberosnet.sharepoint.com/sites/SPSBCN/ –Credentials (Get-Credential)
+
+# Demo 1 - Get-SPOList
+Get-SPOList
+
+$spoList=Get-SPOList -Identity "Documents"
+
+$spoList
+
+$spoList | Get-Member
+
+$spoList.ParentWebUrl
+
+--Here you will get the classic CSOM error when trying to access an object not initialized
+$lList.Views
+
+#Demo 2 - Working with the SPO Context
+$spoCtx=Get-SPOContext
+$spoCtx
+$spoCtx.Load($spoList.Views)
+$spoCtx.ExecuteQuery()
+$spoList.Views.Count
+
+#Demo 3 - New-SPOList
+New-SPOList -Title "SPS BCN Demo List" -Template GenericList -Url lists/spsbcndemolist
+Get-SPOList
+
+#Demo 4 - Add-SPOField
+Add-SPOField -List "SPS BCN Demo List" -DisplayName "SPS BCN Demo Field" -InternalName "SPSBCNDemoField" -Type Text -AddToDefaultView -Required
+
+#Demo 5 - Help
+Help New-SPOList
+
+
+#Demo 6 - Get-SPOGroup
+Get-SPOGroup
+$spoGroup=Get-SPOGroup -Identity 7
+Add-SPOUserToGroup -LoginName -Identity
+
+#Demo 7 - New-SPOTenantSite
+
+New-SPOTenantSite -Title "PnP SPS BCN Site" -Url https://nuberosnet.sharepoint.com/sites/PnPSPSBCN -Owner jcgonzalez@nuberosnet.onmicrosoft.com -Lcid 1033 -Template STS#0 -TimeZone 3
+Get-SPOTimeZoneId -Match Madrid
+
+#Demo8 - Disconnect-SPOnline
+Disconnect-SPOnline
