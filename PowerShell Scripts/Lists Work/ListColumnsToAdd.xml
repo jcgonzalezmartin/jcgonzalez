@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ListTemplate>
+	<Field Type="Text" DisplayName="País" Required="False" MaxLength="255" StaticName="Country" Name="Country" />
+	<Field Type="Number" DisplayName="Población" Required="False" MaxLength="255" StaticName="Population" Name="Population" />
+	<Field Type="DateTime" DisplayName="Fecha Fundación" Required="False" MaxLength="255" StaticName="FoundationDate" Name="FoundationDate" /> 	
+	<Field Type="Choice" DisplayName="Renta per cápita" Required="False" Format="Dropdown" FillInChoice="FALSE" StaticName="PerCapitaIncome" Name="PerCapitaIncome">
+            <Default>0 - 20000</Default>
+            <CHOICES>
+                <CHOICE>0 - 20000</CHOICE>
+                <CHOICE>20000 - 30000</CHOICE>
+		<CHOICE>30000 - 400000</CHOICE>
+		<CHOICE>400000 or more</CHOICE>
+            </CHOICES>
+        </Field>	
+</ListTemplate>
