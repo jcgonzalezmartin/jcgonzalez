@@ -1,0 +1,16 @@
+#Ejecución en la Consola de Administración de SharePoint Online
+$sUserName="juancarlos.gonzalez@fiveshareit.es"
+$sMessage="Introduce your SPO Credentials"
+$sSPOAdminCenterUrl="https://fiveshareit-admin.sharepoint.com/" 
+$msolcred = Get-Credential -UserName $sUserName -Message $sMessage
+Connect-SPOService -Url $sSPOAdminCenterUrl -Credential $msolcred 
+$spoSiteCollections=Get-SPOSite
+
+---Cuotas
+$spoGroupSiteUrl="https://fiveshareit.sharepoint.com/sites/Eventos"
+Get-SPOSite –Identity $spoGroupSiteUrl -detailed |fl
+Set-SPOSite –Identity $spoGroupSiteUrl -StorageQuota 3072 -StorageQuotaWarningLevel 2048
+Set-SPOSite –Identity $spoGroupSiteUrl -StorageQuota 4096 -StorageQuotaWarningLevel 3072
+
+$spoGroupSiteUrl="https://fiveshareit.sharepoint.com/sites/Marketing"
+Get-SPOSite –Identity $spoGroupSiteUrl -detailed |fl
