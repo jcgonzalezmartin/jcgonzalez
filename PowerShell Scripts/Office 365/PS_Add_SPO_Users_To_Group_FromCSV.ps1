@@ -65,6 +65,9 @@ function Add-SPOUsersToGroupFromCSV
 $sUserName = "<O365AdminUser>@<O365Domain>.onmicrosoft.com"
 #$sPassword = Read-Host -Prompt "Enter your password: " -AsSecureString  
 $sPassword=ConvertTo-SecureString "<UserPassord>" -asplaintext -force
+$sSPOAdminCenterUrl="https://<O365Domain>-admin.sharepoint.com/"
+$msolcred = Get-Credential -UserName $sUserName -Message $sMessage
+Connect-SPOService -Url $sSPOAdminCenterUrl -Credential $msolcred
 
 $ScriptDir = Split-Path -parent $MyInvocation.MyCommand.Path
 $sInputFile=$ScriptDir+ "\<File_Name>.csv"
