@@ -92,10 +92,10 @@ function Get-SPSitesInSC
 }
 
 #Required Parameters
-$sSiteColUrl = "https://<SPO_Site>" 
-$sUserName = "<SPO_User>" 
+$sSiteColUrl = "https://nuberosnet.sharepoint.com/sites/ECM/" 
+$sUserName = "jcgonzalez@nuberosnet.onmicrosoft.com" 
 $sPassword = Read-Host -Prompt "Enter your password: " -AsSecureString  
 #$sPassword=convertto-securestring "<User_Password>" -asplaintext -force
-$sCSOMPath="<SPO_Path>"
+$sCSOMPath="G:\03 Docs\10 MVP\04 Eventos\89 SPS Barcelona\Demos\05 SPO\DLLs"
 
 Get-SPSitesInSC -sSiteColUrl $sSiteColUrl -sUserName $sUserName -sPassword $sPassword -sCSOMPath $sCSOMPath
