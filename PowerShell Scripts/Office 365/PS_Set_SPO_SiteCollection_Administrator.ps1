@@ -56,7 +56,7 @@ $sUserName = "<UserName><O365Domain>.onmicrosoft.com"
 #$sPassword = Read-Host -Prompt "Enter your password: " -AsSecureString  
 $sPassword=ConvertTo-SecureString "<UserPassword>" -AsPlainText -Force
 $sCSOMPath="<SPO_Path>"
-$sNewSiteCollectionAdministrator="<UserLogin/SecurityGroupName/Office365GroupName"
+$sNewSiteCollectionAdministrator="<UserLogin/SecurityGroupName/Office365GroupName>"
 
 Set-SPOSiteCollectionAdministrator -sCSOMPath $sCSOMPath -sSiteUrl $sSiteUrl -sUserName $sUserName -sPassword $sPassword -sNewSiteCollectionAdministrator $sNewSiteCollectionAdministrator
 

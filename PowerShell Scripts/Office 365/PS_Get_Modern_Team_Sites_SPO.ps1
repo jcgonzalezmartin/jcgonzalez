@@ -31,6 +31,7 @@ function Get-SPOModernTeamSites
 
 $sSPOAdmin="<SPOUser>@<O365Domain>.onmicrosoft.com"
 $sPassword=ConvertTo-SecureString "<User_Password>" -AsPlainText -Force
-$sSPOAdministrationUrl="https://<O365Domain>-admin.sharepoint.com"
+$sPassword = Read-Host -Prompt "Enter your password: " -AsSecureString  
+$sSPOAdministrationUrl="https://nuberosnet-admin.sharepoint.com"
 
 Get-SPOModernTeamSites -sSPOAdmin $sSPOAdmin -sPassword $sPassword -sSPOAdministrationUrl $sSPOAdministrationUrl
