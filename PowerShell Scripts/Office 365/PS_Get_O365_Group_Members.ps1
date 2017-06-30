@@ -5,17 +5,16 @@
 
 $host.Runspace.ThreadOptions = "ReuseThread"
 
-#Definition of the function that allows to add to Office 365 the list of users contained in the CSV file.
+#Definition of the function that allows to get all the members of all the Office 365 Groups in a tenant
 function Get-O365Members
 {
-    param ($sInputFile)
-    try
+    Try
     {   
-        #Getting all the Groups in the tenant        
+        #Getting all the Office 365 Groups in the tenant        
         Write-Host "Getting all the members for each O365 Group in the tenant ..." -foregroundcolor Green    
         $O365Groups=Get-UnifiedGroup
         # Deleting the users
-        Write-Host "Adding the Office 365 users ..." -ForegroundColor Green    
+        Write-Host "Getting all the users per Group ..." -ForegroundColor Green    
         foreach ($O365Group in $O365Groups) 
         { 
             Write-Host "Members of Group: " $O365Group.DisplayName -ForegroundColor Green
@@ -25,7 +24,7 @@ function Get-O365Members
     }
     catch [System.Exception]
     {
-        write-host -f red $_.Exception.ToString()   
+        Write-Host -ForegroundColor Red $_.Exception.ToString()   
     } 
 }
 
@@ -33,8 +32,10 @@ function Get-O365Members
 $sUserName="<Your_Office365_Admin_Account>"
 $sMessage="Introduce your Office 365 Credentials"
 #Connection to Office 365
-$msolCred = Get-Credential -UserName $sUserName -Message $sMessage
-Connect-MsolService -credential $msolCred
+$O365Cred=Get-Credential -UserName $sUserName -Message $sMessage
+#Creating an EXO PowerShell session
+$PSSession = New-PSSession -ConfigurationName Microsoft.Exchange -ConnectionUri https://outlook.office365.com/powershell-liveid/ -Credential $O365Cred -Authentication Basic -AllowRedirection
+Import-PSSession $PSSession
 
 #Getting Groups Information
 Get-O365Members
