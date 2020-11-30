@@ -1,0 +1,60 @@
+##########################################################################################################################################
+#Script to enable Sensitivity Labels in SharePoint Online, ODFB, Teams and Microsoft 365 Groups at both the document and conainer level
+#Test User: AllanD@M365x222184.OnMicrosoft.com
+##########################################################################################################################################
+#Optional: Uninstall-Module AzureAD 
+
+#First, it's recommended to uninstall Azure AD and Azure AD Preview Modules to be sure we are using the most recent and stable version
+Uninstall-Module AzureAD
+Uninstall-Module AzureADPreview
+
+#We install first Azure AD Preview Module available here (Choose the most estable version, no the last one): https://www.powershellgallery.com/packages/AzureADPreview/2.0.2.119
+Install-Module -Name AzureADPreview -RequiredVersion 2.0.2.119
+Import-Module AzureADPreview
+
+################################################################################################################
+#Enabiling Sensitivity Labels in Azure AD
+################################################################################################################
+Connect-AzureAD
+
+#Checking first we have all the required Azure AD policy templates
+Get-AzureADDirectorySettingTemplate
+
+#Checking settings enabled in Azure AD
+Get-AzureADDirectorySetting
+
+#If settings for Microsoft 365 are not available, we have to create them from the Group.Unified template
+$TemplateId = (Get-AzureADDirectorySettingTemplate | where { $_.DisplayName -eq "Group.Unified" }).Id
+$Template = Get-AzureADDirectorySettingTemplate | where -Property Id -Value $TemplateId -EQ
+$Setting = $Template.CreateDirectorySetting()
+$Setting.Values
+$Setting["EnableMIPLabels"] = "True"
+New-AzureADDirectorySetting -DirectorySetting $Setting
+
+#Following PS sentences are not required If we had to create the settings
+$Setting = Get-AzureADDirectorySetting | ? { $_.DisplayName -eq "Group.Unified"}
+
+#Revisión de configuraciones + Habilitar el uso de Sensitivity Labels
+$Setting.Values
+$Setting["EnableMIPLabels"] = "True"
+Set-AzureADDirectorySetting -Id $Setting.Id -DirectorySetting $Setting
+
+
+################################################################################################################
+#Synchronizing the sensitivity labels already in place to Azure AD
+################################################################################################################
+Import-Module ExchangeOnlineManagement
+Connect-IPPSSession -UserPrincipalName AllanD@M365x222184.OnMicrosoft.com
+Execute-AzureAdLabelSync
+
+
+################################################################################################################
+#Verifying Sensitivity Labels for SPO and ODFB are enabled
+################################################################################################################
+$sSPOAdminCenterURL="https://m365x222184-admin.sharepoint.com/"
+Connect-SPOService -Url $sSPOAdminCenterURL
+$SPOTenant=Get-SPOTenant
+$SPOTenant.EnableAIPIntegration
+
+#In case the setting is not enabled to true, we have to force it
+Set-SPOTenant -EnableAIPIntegration $true
