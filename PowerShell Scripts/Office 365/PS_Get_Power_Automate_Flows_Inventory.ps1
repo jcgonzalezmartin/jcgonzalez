@@ -1,7 +1,6 @@
 ############################################################################################################################################
 # Script that retrieves an inventory of all the Power Automate Flows in a Microsoft 365 tenant and exports the results to a CSV file.
 # Required Parameters:
-#  -> $sTenantName: The name of the tenant (e.g., "contoso" for contoso.onmicrosoft.com)
 #  -> $sOutputFileName: Name of the CSV file to be generated with the flows inventory
 # 
 # Prerequisites:
@@ -16,14 +15,12 @@ function Get-PowerAutomateFlowsInventory
 {
     param(
         [Parameter(Mandatory=$true)]
-        [string]$sTenantName,
-        [Parameter(Mandatory=$true)]
         [string]$sOutputFileName
     )
     
     Try
     {
-        Write-Host "Starting Power Automate Flows inventory for tenant: $sTenantName" -ForegroundColor Green
+        Write-Host "Starting Power Automate Flows inventory..." -ForegroundColor Green
         
         # Initialize array to store all flows
         [array]$allFlows = @()
@@ -32,13 +29,13 @@ function Get-PowerAutomateFlowsInventory
         Write-Host "Retrieving all environments in the tenant..." -ForegroundColor Yellow
         $environments = Get-AdminPowerAppEnvironment
         
-        if ($environments.Count -eq 0)
+        if (@($environments).Count -eq 0)
         {
             Write-Host "No environments found in the tenant." -ForegroundColor Red
             return
         }
         
-        Write-Host "Found $($environments.Count) environment(s). Processing flows..." -ForegroundColor Yellow
+        Write-Host "Found $(@($environments).Count) environment(s). Processing flows..." -ForegroundColor Yellow
         
         # Loop through each environment
         foreach ($environment in $environments)
@@ -48,13 +45,13 @@ function Get-PowerAutomateFlowsInventory
             # Get all flows in the current environment
             $flows = Get-AdminFlow -EnvironmentName $environment.EnvironmentName
             
-            if ($flows.Count -eq 0)
+            if (@($flows).Count -eq 0)
             {
                 Write-Host "  No flows found in this environment." -ForegroundColor Gray
                 continue
             }
             
-            Write-Host "  Found $($flows.Count) flow(s) in this environment." -ForegroundColor Green
+            Write-Host "  Found $(@($flows).Count) flow(s) in this environment." -ForegroundColor Green
             
             # Process each flow
             foreach ($flow in $flows)
@@ -103,7 +100,6 @@ Write-Host "Power Automate Flows Inventory Script" -ForegroundColor Cyan
 Write-Host "============================================================" -ForegroundColor Cyan
 
 # Connection parameters
-$sTenantName = "<Your_Tenant_Name>"  # e.g., "contoso" for contoso.onmicrosoft.com
 $sOutputFileName = "PowerAutomateFlowsInventory.csv"
 
 # Connect to Power Platform
@@ -118,7 +114,7 @@ try
     Write-Host "Connection established successfully!" -ForegroundColor Green
     
     # Get the flows inventory
-    Get-PowerAutomateFlowsInventory -sTenantName $sTenantName -sOutputFileName $sOutputFileName
+    Get-PowerAutomateFlowsInventory -sOutputFileName $sOutputFileName
 }
 catch [System.Exception]
 {
