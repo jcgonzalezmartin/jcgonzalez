@@ -1,0 +1,111 @@
+################################################################################################
+#Introducción a Copilot en SharePoint
+################################################################################################
+-> Botón de Copilot y skills contextuales:
+	-> Resumir página
+	-> Resumir documentos
+
+-> Site AI Settings
+
+-> Copilot in SharePoint Options
+
+################################################################################################
+#Organizar Contenidos en Bibliotecas y Listas
+################################################################################################
+
+-> Organizar Bibliotecas con la skills por defecto
+-> Organizar Bibliotecas mediante prompts:
+	-> Specific prompt: 
+		“This is an invoices library, extract a column with the Vendor Name, Region, Transaction Date, CY-Quarter, and Cost Center.” 
+
+	-> Abstract prompt
+		“Update the default view to be functional and beautiful. This library will be used by different cost centers, help me make the view easy for them to consume.”
+
+	-> Outcome driven prompt
+		“Help me organize this library of invoices and make it easy for the different cost centers to see key details related to their invoices. I need to easily see when 			information is missing like Transaction Date, Vendor Name, and Cost Center so that I can follow up with the right people for corrections.”
+
+-> Skills para listas
+
+
+
+################################################################################################
+#Construir Soluciones
+################################################################################################
+
+-> Crear Sitios:
+	Create a SharePoint site for our product launch. Include pages for timeline, key stakeholders, marketing assets, and a document library for launch materials
+
+-> Crear listas:
+	Create a list to track action items from our weekly meetings. Add columns for assignee, due date, priority, and status. Create a view filtered to items due this week. Add some 	sample data to review the list has been properly created
+
+
+################################################################################################
+#Crea y consume contenido
+################################################################################################
+
+-> Based on the documents in this library, what are the key deliverables for the Q3 product launch and who is responsible for each?
+-> Crear contenido con AI desde Formularios en Bibliotecas
+-> Create Pages on a Site
+
+
+################################################################################################
+#SharePoint Skills
+################################################################################################
+
+-> PnP Skills
+	https://github.com/pnp/sharepoint-skills
+
+-> Ejemplo de Skills:
+	-> Site Inventory
+	-> Files Classifier -> PnP Skill that can be reused in a given site
+	-> 2025 Invoices Dashboard
+
+################################################################################################
+#Crear Dashboards/Informes Visuales y Archivos
+################################################################################################
+
+
+-> Crear Excels:
+	Create an Excel file from the Support tickets list. Include all columns, format as a structured table, and add a summary sheet that shows counts by status and owner, plus a simple 	bar chart of items by category. Save the Excel file in the Spreadsheets folder in the Documents library
+
+-> Crear Dashboards/Informes Visuales:
+	Create an interactive dashboard based on this quarter’s sales performance data [Link to Sales Data]. Include total revenue, quota attainment, top and bottom performing regions, and 	trend over time. Add filters for region and product, and make it suitable for a leadership review. Save the dashboard in the Dashboards folder in the Documents library
+
+	Create an interactive dashboard based on Support tickets list. Summarize key data, highlight top improvements areas, call out trends, and frame it for an internal support service 	review meeting. Add filters that make sense based on the support data, and make it also suitable for a service management review with the support Team Leaders. Save the dashboard 	in the 	Dashboards folder in the Documents library
+
+-> Crear Words:
+	Create a Word document press release based on the sales performance dashboard. Summarize key results, highlight top growth areas, call out trends, and frame it for an internal 	leadership audience. Keep it clear and factual. Save the file in the Reports folder in the Documents library
+
+	Create an executive summary in word based on the Support tickets list data. Summarize key data, highlight top improvements areas, call out trends, and frame it for an 		internal support service review meeting. Keep it clear and factual. Save the file in the Reports folder in the Documents library
+
+-> Create PowerPoint:
+	Now generate a PowerPoint presentation following the same requirements and using the same source files. Save the file in the Reports folder in the Documents library.
+
+
+-> Crear Portfolio Tracker:
+
+	Create a new list for tracking Projects (Project Tracker-<alias> where you use my email alias). It needs columns to track Project Name, Status (On Track, At Risk, Delayed, 	Complete), Owner, Department, and Risk Level (Low, Medium, High). Use [SampleProjectData.xlsx] as the seed data for the list and assign me as the project owner for all projects.
+	Proceed with the following steps one at a time, after each step summarize the steps that remain, then proceed to the next step. Only stop if you need to ask me for information.
+	
+	Step 1: Create views for audience consumption. Create a new view on this list called “Needs Attention” that shows only projects where status is At Risk. Create a new view called 	“Grouped by Dept”.
+
+	Step 2: Add automation/alerts. Send me an email anytime a project status is changed to “Delayed”.
+	
+	Step 3: Add specialized formatting. Remove any previous row colors and highlight the whole row in light red hue if the risk level is high across all 
+	
+	Step 4: Create an interactive HTML report. Create an interactive html report in a dark theme, name it <name of this list>_Report and save it to the Dashboards folder in the 	Documents library. Open the report in the OneUp viewer. 
+
+
+-> Sales Performance Report:
+	Generate a polished, executive-ready sales performance report from this Excel [link to Excel] and this image [Link to the Image]
+	Requirements:
+	1. Use a modern theme. 
+	2. Include KPI cards for total sales, total profit, average order value, top region, and top product/category if available.
+	3. Include charts for sales trend over time, sales by region, sales by product/category, and profit or margin performance. Round all numbers to the nearest whole number. 
+	4. Include interactive filters/search where useful. 
+	5. Include a sortable detail table with the most important rows from the workbook. Add 3 concise business insights based on the data.
+	6. Make the report self-contained in a single HTML file with embedded CSS and JavaScript. 
+	7. Name the file Zava_Sales_AI_Report_<my alias>.html, using my email alias.
+	8. Save the report to the Dashboards folder in the Documents library
+	9. Open the finished report in the OneUp viewer. Work independently and do not ask me for confirmation unless you cannot access the workbook or cannot save the report.
+
